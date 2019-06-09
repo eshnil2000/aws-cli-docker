@@ -3,6 +3,9 @@
 # aws-cli in docker
 * Modified using as base: https://hub.docker.com/r/mesosphere/aws-cli
 
+* docker pull eshnil2000/mesosphere-aws-boto3-cli-pandas
+
+* or build on your own using dockerfile
 * nano ~/.bash_profile
 ```
 export AWS_ACCESS_KEY_ID="xxx"
@@ -23,15 +26,17 @@ docker build -t mesosphere/aws-cli .
 ```
 ====Dockerfile====
 ```
-ROM alpine:3.6
+FROM python:3-alpine
 RUN apk -v --update add \
         python3 \
         py-pip \
         groff \
         less \
         mailcap \
+        py3-numpy \
+        build-base \
         && \
-    pip3 install --upgrade boto3 awscli s3cmd==2.0.1 python-magic && \
+    pip3 install --upgrade boto3 awscli s3cmd==2.0.1 python-magic pandas && \
     apk -v --purge del py-pip  && \
     rm /var/cache/apk/*
 VOLUME /root/.aws
