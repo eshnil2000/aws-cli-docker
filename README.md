@@ -1,7 +1,7 @@
 # aws-cli-docker
 
 # aws-cli in docker
-* https://hub.docker.com/r/mesosphere/aws-cli
+* Modified using as base: https://hub.docker.com/r/mesosphere/aws-cli
 
 * nano ~/.bash_profile
 ```
