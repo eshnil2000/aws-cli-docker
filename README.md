@@ -36,7 +36,7 @@ RUN apk -v --update add \
         py3-numpy \
         build-base \
         && \
-    pip3 install --upgrade boto3 awscli s3cmd==2.0.1 python-magic pandas && \
+    pip3 install --upgrade boto3 awscli s3cmd==2.0.1 python-magic pandas logger sensible && \
     apk -v --purge del py-pip  && \
     rm /var/cache/apk/*
 VOLUME /root/.aws
@@ -50,3 +50,9 @@ screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
 cd /var/lib/docker/volumes
 ```
 to exit screen: Ctrl a+k
+
+* To run test.py, execute from inside the container:
+```python3.7 test.py 
+```
+* or 
+```./test.py
